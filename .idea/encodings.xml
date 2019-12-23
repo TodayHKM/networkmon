@@ -2,5 +2,37 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/CrawlerMain.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/InitCrawler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/LinkCrawlerFXController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/LinkCrawlerFXDialogs.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/LinkCrawlerFXMain.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/Messages.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/connectors/HTTPConnector.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/dao/CheckTaskDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/dao/LinkCheckDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/dao/PageCheckDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/dao/SpecialUrlDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/dao/WarnsDao.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/CustomLinkType.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/LinkModel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/LinkStatus.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/LinkTypes.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/SpecialUrl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/Task.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/URLObject.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/URLValidationCodes.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/UrlReport.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/datatypes/Warn.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/log/LogController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/logic/htmlUnitEngine/Configuration.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/logic/htmlUnitEngine/HTMLUnitSitemapVerificator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/logic/htmlUnitEngine/HtmlUnitCrawler.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/manager/TaskManager.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/manager/TaskMonitor.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/report/Messages.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/report/ReportController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/report/ReportType.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/testLink" charset="GBK" />
   </component>
 </project>

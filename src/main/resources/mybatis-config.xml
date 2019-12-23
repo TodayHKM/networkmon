@@ -8,7 +8,7 @@
 	</settings>
 	
 	<typeAliases>
-		<package name="hsrw.bean"/>
+		<package name="rewriteweb.bean"/>
 	</typeAliases>
 	
 	<plugins>
