@@ -12,6 +12,11 @@
 		<!--只扫描控制器。  -->
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+
+	<context:component-scan base-package="linkcrawler" use-default-filters="false">
+		<!--只扫描控制器。  -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	
 	<!--配置视图解析器，方便页面返回  -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
