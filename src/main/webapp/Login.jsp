@@ -83,7 +83,7 @@
                                     <a href="#">重设密码</a>
                                 </div>
                             </div>
-                            <a href="${APP_PATH}/indexPage"><button type="button" class="btn btn-primary btn-block waves-effect waves-light">登陆</button></a>
+                            <a href="${APP_PATH}/checkLinkPage"><button type="button" class="btn btn-primary btn-block waves-effect waves-light">登陆</button></a>
                             <!--<div class="text-center pt-3">
 
                            <div class="form-row mt-4">
@@ -121,5 +121,6 @@
 <!-- Custom scripts -->
 <script src="${APP_PATH}/resources/js/app-script.js"></script>
 
+<%--http://www.jmi.edu.cn/--%>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/Logs/Log-2019_12_27__08_55_01.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Logs/Log-2019_12_27__09_00_11.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Logs/Log-2019_12_27__09_13_59.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Logs/Log-2019_12_27__09_32_55.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/CrawlerMain.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/LinkCrawlerFXController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/LinkCrawlerFXMain.java" charset="GBK" />
@@ -31,6 +32,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/warn/EmailWarner.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/warn/WarnMonitor.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/linkcrawler/warn/WarnRule.java" charset="GBK" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
