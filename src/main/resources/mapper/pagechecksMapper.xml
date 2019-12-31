@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewriteweb.dao.pagechecksMapper">
+  <resultMap id="BaseResultMap" type="rewriteweb.bean.pagechecks">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="YURL_ID" jdbcType="VARCHAR" property="yurlId" />
+    <result column="YBT" jdbcType="VARCHAR" property="ybt" />
+    <result column="YLX" jdbcType="DECIMAL" property="ylx" />
+    <result column="YJZZT" jdbcType="CHAR" property="yjzzt" />
+    <result column="YNHLS" jdbcType="DECIMAL" property="ynhls" />
+    <result column="SSRW_ID" jdbcType="VARCHAR" property="ssrwId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, YURL_ID, YBT, YLX, YJZZT, YNHLS, SSRW_ID
+  </sql>
+  <select id="selectByExample" parameterType="rewriteweb.bean.pagechecksExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from pagechecks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="rewriteweb.bean.pagechecksExample">
+    delete from pagechecks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="rewriteweb.bean.pagechecks">
+    insert into pagechecks (ID, YURL_ID, YBT, 
+      YLX, YJZZT, YNHLS, SSRW_ID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{yurlId,jdbcType=VARCHAR}, #{ybt,jdbcType=VARCHAR}, 
+      #{ylx,jdbcType=DECIMAL}, #{yjzzt,jdbcType=CHAR}, #{ynhls,jdbcType=DECIMAL}, #{ssrwId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="rewriteweb.bean.pagechecks">
+    insert into pagechecks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="yurlId != null">
+        YURL_ID,
+      </if>
+      <if test="ybt != null">
+        YBT,
+      </if>
+      <if test="ylx != null">
+        YLX,
+      </if>
+      <if test="yjzzt != null">
+        YJZZT,
+      </if>
+      <if test="ynhls != null">
+        YNHLS,
+      </if>
+      <if test="ssrwId != null">
+        SSRW_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="yurlId != null">
+        #{yurlId,jdbcType=VARCHAR},
+      </if>
+      <if test="ybt != null">
+        #{ybt,jdbcType=VARCHAR},
+      </if>
+      <if test="ylx != null">
+        #{ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="yjzzt != null">
+        #{yjzzt,jdbcType=CHAR},
+      </if>
+      <if test="ynhls != null">
+        #{ynhls,jdbcType=DECIMAL},
+      </if>
+      <if test="ssrwId != null">
+        #{ssrwId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="rewriteweb.bean.pagechecksExample" resultType="java.lang.Long">
+    select count(*) from pagechecks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update pagechecks
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yurlId != null">
+        YURL_ID = #{record.yurlId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ybt != null">
+        YBT = #{record.ybt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ylx != null">
+        YLX = #{record.ylx,jdbcType=DECIMAL},
+      </if>
+      <if test="record.yjzzt != null">
+        YJZZT = #{record.yjzzt,jdbcType=CHAR},
+      </if>
+      <if test="record.ynhls != null">
+        YNHLS = #{record.ynhls,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ssrwId != null">
+        SSRW_ID = #{record.ssrwId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update pagechecks
+    set ID = #{record.id,jdbcType=VARCHAR},
+      YURL_ID = #{record.yurlId,jdbcType=VARCHAR},
+      YBT = #{record.ybt,jdbcType=VARCHAR},
+      YLX = #{record.ylx,jdbcType=DECIMAL},
+      YJZZT = #{record.yjzzt,jdbcType=CHAR},
+      YNHLS = #{record.ynhls,jdbcType=DECIMAL},
+      SSRW_ID = #{record.ssrwId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

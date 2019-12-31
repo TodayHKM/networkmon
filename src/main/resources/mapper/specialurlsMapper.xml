@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewriteweb.dao.specialurlsMapper">
+  <resultMap id="BaseResultMap" type="rewriteweb.bean.specialurls">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="WZ" jdbcType="VARCHAR" property="wz" />
+    <result column="MSWB" jdbcType="VARCHAR" property="mswb" />
+    <result column="LX" jdbcType="DECIMAL" property="lx" />
+    <result column="RW_ID" jdbcType="VARCHAR" property="rwId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, WZ, MSWB, LX, RW_ID
+  </sql>
+  <select id="selectByExample" parameterType="rewriteweb.bean.specialurlsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from specialurls
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="rewriteweb.bean.specialurlsExample">
+    delete from specialurls
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="rewriteweb.bean.specialurls">
+    insert into specialurls (ID, WZ, MSWB, 
+      LX, RW_ID)
+    values (#{id,jdbcType=VARCHAR}, #{wz,jdbcType=VARCHAR}, #{mswb,jdbcType=VARCHAR}, 
+      #{lx,jdbcType=DECIMAL}, #{rwId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="rewriteweb.bean.specialurls">
+    insert into specialurls
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="wz != null">
+        WZ,
+      </if>
+      <if test="mswb != null">
+        MSWB,
+      </if>
+      <if test="lx != null">
+        LX,
+      </if>
+      <if test="rwId != null">
+        RW_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="wz != null">
+        #{wz,jdbcType=VARCHAR},
+      </if>
+      <if test="mswb != null">
+        #{mswb,jdbcType=VARCHAR},
+      </if>
+      <if test="lx != null">
+        #{lx,jdbcType=DECIMAL},
+      </if>
+      <if test="rwId != null">
+        #{rwId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="rewriteweb.bean.specialurlsExample" resultType="java.lang.Long">
+    select count(*) from specialurls
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update specialurls
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wz != null">
+        WZ = #{record.wz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mswb != null">
+        MSWB = #{record.mswb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lx != null">
+        LX = #{record.lx,jdbcType=DECIMAL},
+      </if>
+      <if test="record.rwId != null">
+        RW_ID = #{record.rwId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update specialurls
+    set ID = #{record.id,jdbcType=VARCHAR},
+      WZ = #{record.wz,jdbcType=VARCHAR},
+      MSWB = #{record.mswb,jdbcType=VARCHAR},
+      LX = #{record.lx,jdbcType=DECIMAL},
+      RW_ID = #{record.rwId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

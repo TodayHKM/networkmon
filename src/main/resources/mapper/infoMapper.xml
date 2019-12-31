@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewriteweb.dao.infoMapper">
+  <resultMap id="BaseResultMap" type="rewriteweb.bean.info">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="RWMC" jdbcType="VARCHAR" property="rwmc" />
+    <result column="WZZT" jdbcType="CHAR" property="wzzt" />
+    <result column="URL_YCCS" jdbcType="DECIMAL" property="urlYccs" />
+    <result column="YMJZYCCS" jdbcType="DECIMAL" property="ymjzyccs" />
+    <result column="LJCSYCCS" jdbcType="DECIMAL" property="ljcsyccs" />
+    <result column="JCKSSJ" jdbcType="VARCHAR" property="jckssj" />
+    <result column="JCJSSJ" jdbcType="VARCHAR" property="jcjssj" />
+  </resultMap>
+  <select id="selectinfo" resultMap="BaseResultMap">
+ select t.ID,t.RWMC,c.WZZT,c.URL_YCCS,c.LJCSYCCS,c.JCKSSJ,c.JCJSSJ,c.YMJZYCCS
+ from task t
+ left join checktask c
+ on t.ID=c.RW_ID;
+  	</select>
+
+</mapper>

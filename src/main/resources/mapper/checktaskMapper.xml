@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewriteweb.dao.checktaskMapper">
+  <resultMap id="BaseResultMap" type="rewriteweb.bean.checktask">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="RW_ID" jdbcType="VARCHAR" property="rwId" />
+    <result column="WZZT" jdbcType="CHAR" property="wzzt" />
+    <result column="URL_YCCS" jdbcType="DECIMAL" property="urlYccs" />
+    <result column="YMJZYCCS" jdbcType="DECIMAL" property="ymjzyccs" />
+    <result column="LJCSYCCS" jdbcType="DECIMAL" property="ljcsyccs" />
+    <result column="JCKSSJ" jdbcType="VARCHAR" property="jckssj" />
+    <result column="JCJSSJ" jdbcType="VARCHAR" property="jcjssj" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, RW_ID, WZZT, URL_YCCS, YMJZYCCS, LJCSYCCS, JCKSSJ, JCJSSJ
+  </sql>
+  <select id="selectByExample" parameterType="rewriteweb.bean.checktaskExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from checktask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="rewriteweb.bean.checktaskExample">
+    delete from checktask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="rewriteweb.bean.checktask">
+    insert into checktask (ID, RW_ID, WZZT, 
+      URL_YCCS, YMJZYCCS, LJCSYCCS, 
+      JCKSSJ, JCJSSJ)
+    values (#{id,jdbcType=VARCHAR}, #{rwId,jdbcType=VARCHAR}, #{wzzt,jdbcType=CHAR}, 
+      #{urlYccs,jdbcType=DECIMAL}, #{ymjzyccs,jdbcType=DECIMAL}, #{ljcsyccs,jdbcType=DECIMAL}, 
+      #{jckssj,jdbcType=VARCHAR}, #{jcjssj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="rewriteweb.bean.checktask">
+    insert into checktask
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="rwId != null">
+        RW_ID,
+      </if>
+      <if test="wzzt != null">
+        WZZT,
+      </if>
+      <if test="urlYccs != null">
+        URL_YCCS,
+      </if>
+      <if test="ymjzyccs != null">
+        YMJZYCCS,
+      </if>
+      <if test="ljcsyccs != null">
+        LJCSYCCS,
+      </if>
+      <if test="jckssj != null">
+        JCKSSJ,
+      </if>
+      <if test="jcjssj != null">
+        JCJSSJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rwId != null">
+        #{rwId,jdbcType=VARCHAR},
+      </if>
+      <if test="wzzt != null">
+        #{wzzt,jdbcType=CHAR},
+      </if>
+      <if test="urlYccs != null">
+        #{urlYccs,jdbcType=DECIMAL},
+      </if>
+      <if test="ymjzyccs != null">
+        #{ymjzyccs,jdbcType=DECIMAL},
+      </if>
+      <if test="ljcsyccs != null">
+        #{ljcsyccs,jdbcType=DECIMAL},
+      </if>
+      <if test="jckssj != null">
+        #{jckssj,jdbcType=VARCHAR},
+      </if>
+      <if test="jcjssj != null">
+        #{jcjssj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="rewriteweb.bean.checktaskExample" resultType="java.lang.Long">
+    select count(*) from checktask
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update checktask
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rwId != null">
+        RW_ID = #{record.rwId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wzzt != null">
+        WZZT = #{record.wzzt,jdbcType=CHAR},
+      </if>
+      <if test="record.urlYccs != null">
+        URL_YCCS = #{record.urlYccs,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ymjzyccs != null">
+        YMJZYCCS = #{record.ymjzyccs,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ljcsyccs != null">
+        LJCSYCCS = #{record.ljcsyccs,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jckssj != null">
+        JCKSSJ = #{record.jckssj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jcjssj != null">
+        JCJSSJ = #{record.jcjssj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update checktask
+    set ID = #{record.id,jdbcType=VARCHAR},
+      RW_ID = #{record.rwId,jdbcType=VARCHAR},
+      WZZT = #{record.wzzt,jdbcType=CHAR},
+      URL_YCCS = #{record.urlYccs,jdbcType=DECIMAL},
+      YMJZYCCS = #{record.ymjzyccs,jdbcType=DECIMAL},
+      LJCSYCCS = #{record.ljcsyccs,jdbcType=DECIMAL},
+      JCKSSJ = #{record.jckssj,jdbcType=VARCHAR},
+      JCJSSJ = #{record.jcjssj,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+</mapper>

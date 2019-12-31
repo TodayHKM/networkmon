@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewriteweb.dao.linkchecksMapper">
+  <resultMap id="BaseResultMap" type="rewriteweb.bean.linkchecks">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="LJ_URL" jdbcType="VARCHAR" property="ljUrl" />
+    <result column="LJWB" jdbcType="VARCHAR" property="ljwb" />
+    <result column="ZTXX" jdbcType="VARCHAR" property="ztxx" />
+    <result column="SFCS" jdbcType="CHAR" property="sfcs" />
+    <result column="ZT" jdbcType="CHAR" property="zt" />
+    <result column="LJJCRQ" jdbcType="VARCHAR" property="ljjcrq" />
+    <result column="LJSZWY_ID" jdbcType="VARCHAR" property="ljszwyId" />
+    <result column="SSRW_ID" jdbcType="VARCHAR" property="ssrwId" />
+    <result column="LJLX" jdbcType="DECIMAL" property="ljlx" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, LJ_URL, LJWB, ZTXX, SFCS, ZT, LJJCRQ, LJSZWY_ID, SSRW_ID, LJLX
+  </sql>
+  <select id="selectByExample" parameterType="rewriteweb.bean.linkchecksExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from linkchecks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="rewriteweb.bean.linkchecksExample">
+    delete from linkchecks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="rewriteweb.bean.linkchecks">
+    insert into linkchecks (ID, LJ_URL, LJWB, 
+      ZTXX, SFCS, ZT, LJJCRQ, 
+      LJSZWY_ID, SSRW_ID, LJLX
+      )
+    values (#{id,jdbcType=VARCHAR}, #{ljUrl,jdbcType=VARCHAR}, #{ljwb,jdbcType=VARCHAR}, 
+      #{ztxx,jdbcType=VARCHAR}, #{sfcs,jdbcType=CHAR}, #{zt,jdbcType=CHAR}, #{ljjcrq,jdbcType=VARCHAR}, 
+      #{ljszwyId,jdbcType=VARCHAR}, #{ssrwId,jdbcType=VARCHAR}, #{ljlx,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="rewriteweb.bean.linkchecks">
+    insert into linkchecks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="ljUrl != null">
+        LJ_URL,
+      </if>
+      <if test="ljwb != null">
+        LJWB,
+      </if>
+      <if test="ztxx != null">
+        ZTXX,
+      </if>
+      <if test="sfcs != null">
+        SFCS,
+      </if>
+      <if test="zt != null">
+        ZT,
+      </if>
+      <if test="ljjcrq != null">
+        LJJCRQ,
+      </if>
+      <if test="ljszwyId != null">
+        LJSZWY_ID,
+      </if>
+      <if test="ssrwId != null">
+        SSRW_ID,
+      </if>
+      <if test="ljlx != null">
+        LJLX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="ljUrl != null">
+        #{ljUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="ljwb != null">
+        #{ljwb,jdbcType=VARCHAR},
+      </if>
+      <if test="ztxx != null">
+        #{ztxx,jdbcType=VARCHAR},
+      </if>
+      <if test="sfcs != null">
+        #{sfcs,jdbcType=CHAR},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=CHAR},
+      </if>
+      <if test="ljjcrq != null">
+        #{ljjcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="ljszwyId != null">
+        #{ljszwyId,jdbcType=VARCHAR},
+      </if>
+      <if test="ssrwId != null">
+        #{ssrwId,jdbcType=VARCHAR},
+      </if>
+      <if test="ljlx != null">
+        #{ljlx,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="rewriteweb.bean.linkchecksExample" resultType="java.lang.Long">
+    select count(*) from linkchecks
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update linkchecks
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ljUrl != null">
+        LJ_URL = #{record.ljUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ljwb != null">
+        LJWB = #{record.ljwb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ztxx != null">
+        ZTXX = #{record.ztxx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfcs != null">
+        SFCS = #{record.sfcs,jdbcType=CHAR},
+      </if>
+      <if test="record.zt != null">
+        ZT = #{record.zt,jdbcType=CHAR},
+      </if>
+      <if test="record.ljjcrq != null">
+        LJJCRQ = #{record.ljjcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ljszwyId != null">
+        LJSZWY_ID = #{record.ljszwyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssrwId != null">
+        SSRW_ID = #{record.ssrwId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ljlx != null">
+        LJLX = #{record.ljlx,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update linkchecks
+    set ID = #{record.id,jdbcType=VARCHAR},
+      LJ_URL = #{record.ljUrl,jdbcType=VARCHAR},
+      LJWB = #{record.ljwb,jdbcType=VARCHAR},
+      ZTXX = #{record.ztxx,jdbcType=VARCHAR},
+      SFCS = #{record.sfcs,jdbcType=CHAR},
+      ZT = #{record.zt,jdbcType=CHAR},
+      LJJCRQ = #{record.ljjcrq,jdbcType=VARCHAR},
+      LJSZWY_ID = #{record.ljszwyId,jdbcType=VARCHAR},
+      SSRW_ID = #{record.ssrwId,jdbcType=VARCHAR},
+      LJLX = #{record.ljlx,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select id="selectlinkchecksinfo" resultMap="BaseResultMap">
+SELECT ID,LJ_URL,LJWB,ZT,ZTXX
+from linkchecks
+where ZT = 1;
+  	</select>
+
+</mapper>

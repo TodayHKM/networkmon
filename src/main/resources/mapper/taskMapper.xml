@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewriteweb.dao.taskMapper">
+  <resultMap id="BaseResultMap" type="rewriteweb.bean.task">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="RWMC" jdbcType="VARCHAR" property="rwmc" />
+    <result column="JKWZ_URL" jdbcType="VARCHAR" property="jkwzUrl" />
+    <result column="FZBM" jdbcType="VARCHAR" property="fzbm" />
+    <result column="JKPL" jdbcType="DECIMAL" property="jkpl" />
+    <result column="JKSD" jdbcType="DECIMAL" property="jksd" />
+    <result column="CSSZ" jdbcType="DECIMAL" property="cssz" />
+    <result column="ZT" jdbcType="CHAR" property="zt" />
+    <result column="CZ" jdbcType="CHAR" property="cz" />
+    <result column="BJJSYX" jdbcType="VARCHAR" property="bjjsyx" />
+    <result column="FSYX" jdbcType="VARCHAR" property="fsyx" />
+    <result column="FSYXMM" jdbcType="VARCHAR" property="fsyxmm" />
+    <result column="YXZJ" jdbcType="VARCHAR" property="yxzj" />
+    <result column="BJDH" jdbcType="VARCHAR" property="bjdh" />
+    <result column="SFYXBJ" jdbcType="CHAR" property="sfyxbj" />
+    <result column="SFDXBJ" jdbcType="CHAR" property="sfdxbj" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, RWMC, JKWZ_URL, FZBM, JKPL, JKSD, CSSZ, ZT, CZ, BJJSYX, FSYX, FSYXMM, YXZJ, BJDH, 
+    SFYXBJ, SFDXBJ
+  </sql>
+  <select id="selectByExample" parameterType="rewriteweb.bean.taskExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from task
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="rewriteweb.bean.taskExample">
+    delete from task
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="java.lang.String">
+    <selectKey  keyProperty="ID" resultType="java.lang.String" order="BEFORE">
+                  select uuid()
+     </selectKey>
+    insert into task (ID, RWMC, JKWZ_URL, 
+      FZBM, JKPL, JKSD, CSSZ, 
+      ZT, CZ, BJJSYX, FSYX, 
+      FSYXMM, YXZJ, BJDH, 
+      SFYXBJ, SFDXBJ)
+    values (, #{rwinput,jdbcType=VARCHAR}, #{ljinput,jdbcType=VARCHAR},
+      '负责部门', '30', '2', '8',
+      '0', '1','15850675602@139.com', 'dalei_main2000@163.com',
+      'fanghong2006', 'smtp.163.com', '13222099137',
+      '1', '1')
+  </insert>
+  <insert id="insertSelective" parameterType="rewriteweb.bean.task">
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="rwmc != null">
+        RWMC,
+      </if>
+      <if test="jkwzUrl != null">
+        JKWZ_URL,
+      </if>
+      <if test="fzbm != null">
+        FZBM,
+      </if>
+      <if test="jkpl != null">
+        JKPL,
+      </if>
+      <if test="jksd != null">
+        JKSD,
+      </if>
+      <if test="cssz != null">
+        CSSZ,
+      </if>
+      <if test="zt != null">
+        ZT,
+      </if>
+      <if test="cz != null">
+        CZ,
+      </if>
+      <if test="bjjsyx != null">
+        BJJSYX,
+      </if>
+      <if test="fsyx != null">
+        FSYX,
+      </if>
+      <if test="fsyxmm != null">
+        FSYXMM,
+      </if>
+      <if test="yxzj != null">
+        YXZJ,
+      </if>
+      <if test="bjdh != null">
+        BJDH,
+      </if>
+      <if test="sfyxbj != null">
+        SFYXBJ,
+      </if>
+      <if test="sfdxbj != null">
+        SFDXBJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rwmc != null">
+        #{rwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="jkwzUrl != null">
+        #{jkwzUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fzbm != null">
+        #{fzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="jkpl != null">
+        #{jkpl,jdbcType=DECIMAL},
+      </if>
+      <if test="jksd != null">
+        #{jksd,jdbcType=DECIMAL},
+      </if>
+      <if test="cssz != null">
+        #{cssz,jdbcType=DECIMAL},
+      </if>
+      <if test="zt != null">
+        #{zt,jdbcType=CHAR},
+      </if>
+      <if test="cz != null">
+        #{cz,jdbcType=CHAR},
+      </if>
+      <if test="bjjsyx != null">
+        #{bjjsyx,jdbcType=VARCHAR},
+      </if>
+      <if test="fsyx != null">
+        #{fsyx,jdbcType=VARCHAR},
+      </if>
+      <if test="fsyxmm != null">
+        #{fsyxmm,jdbcType=VARCHAR},
+      </if>
+      <if test="yxzj != null">
+        #{yxzj,jdbcType=VARCHAR},
+      </if>
+      <if test="bjdh != null">
+        #{bjdh,jdbcType=VARCHAR},
+      </if>
+      <if test="sfyxbj != null">
+        #{sfyxbj,jdbcType=CHAR},
+      </if>
+      <if test="sfdxbj != null">
+        #{sfdxbj,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="rewriteweb.bean.taskExample" resultType="java.lang.Long">
+    select count(*) from task
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update task
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rwmc != null">
+        RWMC = #{record.rwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jkwzUrl != null">
+        JKWZ_URL = #{record.jkwzUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fzbm != null">
+        FZBM = #{record.fzbm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jkpl != null">
+        JKPL = #{record.jkpl,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jksd != null">
+        JKSD = #{record.jksd,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cssz != null">
+        CSSZ = #{record.cssz,jdbcType=DECIMAL},
+      </if>
+      <if test="record.zt != null">
+        ZT = #{record.zt,jdbcType=CHAR},
+      </if>
+      <if test="record.cz != null">
+        CZ = #{record.cz,jdbcType=CHAR},
+      </if>
+      <if test="record.bjjsyx != null">
+        BJJSYX = #{record.bjjsyx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsyx != null">
+        FSYX = #{record.fsyx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fsyxmm != null">
+        FSYXMM = #{record.fsyxmm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yxzj != null">
+        YXZJ = #{record.yxzj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bjdh != null">
+        BJDH = #{record.bjdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sfyxbj != null">
+        SFYXBJ = #{record.sfyxbj,jdbcType=CHAR},
+      </if>
+      <if test="record.sfdxbj != null">
+        SFDXBJ = #{record.sfdxbj,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update task
+    set ID = #{record.id,jdbcType=VARCHAR},
+      RWMC = #{record.rwmc,jdbcType=VARCHAR},
+      JKWZ_URL = #{record.jkwzUrl,jdbcType=VARCHAR},
+      FZBM = #{record.fzbm,jdbcType=VARCHAR},
+      JKPL = #{record.jkpl,jdbcType=DECIMAL},
+      JKSD = #{record.jksd,jdbcType=DECIMAL},
+      CSSZ = #{record.cssz,jdbcType=DECIMAL},
+      ZT = #{record.zt,jdbcType=CHAR},
+      CZ = #{record.cz,jdbcType=CHAR},
+      BJJSYX = #{record.bjjsyx,jdbcType=VARCHAR},
+      FSYX = #{record.fsyx,jdbcType=VARCHAR},
+      FSYXMM = #{record.fsyxmm,jdbcType=VARCHAR},
+      YXZJ = #{record.yxzj,jdbcType=VARCHAR},
+      BJDH = #{record.bjdh,jdbcType=VARCHAR},
+      SFYXBJ = #{record.sfyxbj,jdbcType=CHAR},
+      SFDXBJ = #{record.sfdxbj,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+
+  <select id="selectBycz0" resultMap="BaseResultMap">
+	  select
+	   *
+	    from
+	     task
+	     where cz=0
+  	</select>
+
+  <update id="updatetask" >
+    update task
+    set RWMC = #{rwinput,jdbcType=VARCHAR},
+      JKWZ_URL = #{ljinput,jdbcType=VARCHAR},
+    where id = 1
+  </update>
+
+  <update id="updatetask0" >
+  UPDATE task SET CZ='0';
+  </update>
+
+  <update id="updatetask1" >
+  UPDATE task SET CZ='1';
+  </update>
+
+
+
+  <!--  UPDATE task SET RWMC='ewe',JKWZ_URL='dfaffq' WHERE ID=1;-->
+</mapper>
